@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ title }}</h4> 
+  <button type="button" class="btn-close close btn-close-white pull-right" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+<div class="modal-body">
+  <form #eventForm="ngForm">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="event.title" required>
+    </div>
+    <div class="mb-3">
+      <label for="start" class="form-label">Início</label>
+      <input type="datetime-local" class="form-control" id="start" name="start" [(ngModel)]="event.start">
+    </div>
+    <div class="mb-3">
+      <label for="end" class="form-label">Fim</label>
+      <input type="datetime-local" class="form-control" id="end" name="end" [(ngModel)]="event.end">
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer d-flex justify-content-between">
+  <button type="button" class="btn btn-danger" (click)="deleteEvent()" *ngIf="event.id">Excluir</button>
+  
+  <div>
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="saveEvent()" [disabled]="!eventForm.form.valid">Salvar</button>
+  </div>
+</div>

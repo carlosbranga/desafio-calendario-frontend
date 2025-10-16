@@ -1,0 +1,22 @@
+<div class="modal-header bg-primary text-white">
+  <h4 class="modal-title pull-left">Eventos de Hoje</h4>
+  <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+<div class="modal-body">
+  <ul class="list-group" *ngIf="events.length > 0; else noEvents">
+    <li class="list-group-item" *ngFor="let event of events">
+      <strong>{{ event.start | date:'HH:mm' }}</strong> - {{ event.title }}
+    </li>
+  </ul>
+
+  <ng-template #noEvents>
+    <div class="text-center text-muted p-4">
+      <p>Nenhum evento agendado para hoje.</p>
+    </div>
+  </ng-template>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="closeModal()">Fechar</button>
+</div>
